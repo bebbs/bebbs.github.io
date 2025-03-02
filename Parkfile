@@ -1,0 +1,14 @@
+require 'parklife/rails'
+require_relative 'config/environment'
+
+Parklife.application.configure do |config|
+  # Serve trailing slash-less URLs from GitHub Pages.
+  config.nested_index = false
+
+  # See configuration options here:
+  # https://github.com/benpickles/parklife#configuration
+end
+
+Parklife.application.routes do
+  root crawl: true
+end

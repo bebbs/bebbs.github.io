@@ -14,6 +14,7 @@ gem "thruster", require: false
 
 # Custom gems
 gem "view_component"
+gem "parklife"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
@@ -24,4 +25,3 @@ end
 group :development do
   gem "web-console"
 end
-

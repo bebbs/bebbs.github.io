@@ -148,6 +148,10 @@ GEM
     nokogiri (1.18.3-x86_64-linux-musl)
       racc (~> 1.4)
     parallel (1.26.3)
+    parklife (0.7.0)
+      nokogiri
+      rack-test
+      thor
     parser (3.3.7.1)
       ast (~> 2.4.1)
       racc
@@ -300,6 +304,7 @@ DEPENDENCIES
   brakeman
   debug
   importmap-rails
+  parklife
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.1)
