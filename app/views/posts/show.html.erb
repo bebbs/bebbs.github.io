@@ -2,8 +2,6 @@
 
 <article class="space-y-8">
   <div class="space-y-4">
-    <%= link_to "Back to home", root_path, class: "eyebrow inline-flex items-center gap-2 text-stone-500 transition hover:text-stone-900" %>
-
     <header class="space-y-5">
       <p class="text-sm text-stone-500"><%= format_publish_date(@post.published_on) %></p>
       <h1 class="text-4xl font-semibold tracking-tight text-stone-950 sm:text-5xl"><%= @post.title %></h1>

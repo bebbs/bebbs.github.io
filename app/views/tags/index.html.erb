@@ -1,0 +1,16 @@
+<% content_for :title, page_title("Tags") %>
+
+<section class="space-y-12">
+  <div class="space-y-4">
+    <p class="eyebrow">Tags</p>
+  </div>
+
+  <div class="tag-cloud">
+    <% @tags.each do |tag| %>
+      <div class="tag-cloud-item">
+        <%= link_to tag.slug, tag_path(tag.slug), class: tag_cloud_link_classes(tag, @tags) %>
+        <span class="tag-cloud-count"><%= tag.post_count %></span>
+      </div>
+    <% end %>
+  </div>
+</section>

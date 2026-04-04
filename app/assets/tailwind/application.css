@@ -29,7 +29,7 @@
   }
 
   .site-title {
-    @apply text-3xl font-semibold tracking-tight text-stone-950 transition hover:text-amber-800 sm:text-4xl;
+    @apply inline-flex items-center gap-2 text-3xl font-semibold tracking-tight text-stone-950 transition hover:text-amber-800 sm:text-4xl;
   }
 
   .site-footer {
@@ -43,12 +43,12 @@
   }
 
   .nav-link {
-    @apply text-sm text-stone-600 transition hover:text-stone-950;
+    @apply text-sm text-stone-600 underline decoration-stone-400 underline-offset-4 transition hover:text-amber-800 hover:decoration-amber-600;
     font-family: ui-sans-serif, system-ui, sans-serif;
   }
 
   .nav-link-current {
-    @apply text-stone-950;
+    @apply text-stone-950 decoration-stone-700;
   }
 
   .tag-chip {
@@ -101,5 +101,42 @@
 
   .article-body pre code {
     @apply bg-transparent p-0 text-inherit;
+  }
+
+  .tag-cloud {
+    @apply flex flex-wrap items-end gap-x-7 gap-y-4 border-t border-stone-300/80 pt-10;
+  }
+
+  .tag-cloud-item {
+    @apply inline-flex items-end gap-2 leading-none;
+  }
+
+  .tag-cloud-link {
+    @apply text-blue-700 underline decoration-blue-700/80 underline-offset-4 transition hover:text-blue-900 hover:decoration-blue-900;
+  }
+
+  .tag-cloud-link-xl {
+    @apply text-4xl font-semibold sm:text-5xl;
+  }
+
+  .tag-cloud-link-lg {
+    @apply text-3xl font-semibold sm:text-4xl;
+  }
+
+  .tag-cloud-link-md {
+    @apply text-2xl font-semibold sm:text-3xl;
+  }
+
+  .tag-cloud-link-sm {
+    @apply text-xl font-semibold sm:text-2xl;
+  }
+
+  .tag-cloud-count {
+    @apply text-xl font-semibold text-stone-500 sm:text-2xl;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+  }
+
+  .back-link {
+    @apply inline-flex items-center gap-2 text-2xl text-blue-700 underline decoration-blue-700/80 underline-offset-4 transition hover:text-blue-900 hover:decoration-blue-900;
   }
 }

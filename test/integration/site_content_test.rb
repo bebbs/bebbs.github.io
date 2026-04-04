@@ -8,6 +8,7 @@ class SiteContentTest < ActionDispatch::IntegrationTest
     assert_select "script[type='importmap']"
     assert_select "script[type='module']"
     assert_select "meta[name='turbo-prefetch'][content='false']", false
+    assert_select "a[href='/tags']", text: "Tags"
     assert_select "h2", text: "Starting With Rails and Markdown"
     assert_select "a[href='/tags/ai-engineering']", text: "#ai-engineering"
   end
@@ -34,5 +35,14 @@ class SiteContentTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select "h1", text: "#ai-engineering"
     assert_select "a[href='/posts/starting-with-rails-and-markdown']", text: "Starting With Rails and Markdown"
+  end
+
+  test "tags index renders the tag cloud" do
+    get tags_path
+
+    assert_response :success
+    assert_select "p.eyebrow", text: "Tags"
+    assert_select "a[href='/tags/ai-engineering']", text: "ai-engineering"
+    assert_select ".tag-cloud-count", text: "1"
   end
 end

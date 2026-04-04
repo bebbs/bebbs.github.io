@@ -10,5 +10,9 @@ module Content
     def path
       "/tags/#{slug}"
     end
+
+    def post_count
+      posts.size
+    end
   end
 end
