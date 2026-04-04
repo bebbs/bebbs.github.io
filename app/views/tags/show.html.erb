@@ -1,0 +1,13 @@
+<% content_for :title, page_title("##{@tag.slug}") %>
+
+<section class="space-y-8">
+  <header class="space-y-4">
+    <p class="eyebrow">Tag archive</p>
+    <h1 class="text-4xl font-semibold tracking-tight text-stone-950 sm:text-5xl">#<%= @tag.slug %></h1>
+    <p class="max-w-2xl text-lg leading-8 text-stone-600">
+      <%= pluralize(@posts.size, "post") %> filed under this tag.
+    </p>
+  </header>
+
+  <%= render "shared/post_list", posts: @posts %>
+</section>

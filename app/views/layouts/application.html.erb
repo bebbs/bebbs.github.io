@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || page_title %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="<%= site_tagline %>">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+  </head>
+
+  <body class="min-h-screen bg-paper text-ink antialiased">
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+          <div class="space-y-3">
+            <%= link_to site_title, root_path, class: "site-title" %>
+            <p class="max-w-2xl text-base leading-7 text-stone-600"><%= site_tagline %></p>
+          </div>
+
+          <% if site_pages.any? %>
+            <nav class="flex flex-wrap gap-4">
+              <% site_pages.each do |page| %>
+                <%= link_to page.title, page_path(page.slug), class: nav_link_classes(page.path) %>
+              <% end %>
+            </nav>
+          <% end %>
+        </div>
+      </header>
+
+      <main>
+        <%= yield %>
+      </main>
+
+      <footer class="site-footer">
+        <p>Built with Rails, markdown files, and Parklife.</p>
+      </footer>
+    </div>
+  </body>
+</html>

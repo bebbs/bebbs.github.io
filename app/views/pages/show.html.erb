@@ -1,0 +1,12 @@
+<% content_for :title, page_title(@page.title) %>
+
+<article class="space-y-8">
+  <header class="space-y-4">
+    <p class="eyebrow">Page</p>
+    <h1 class="text-4xl font-semibold tracking-tight text-stone-950 sm:text-5xl"><%= @page.title %></h1>
+  </header>
+
+  <div class="article-body">
+    <%= @page.body_html.html_safe %>
+  </div>
+</article>

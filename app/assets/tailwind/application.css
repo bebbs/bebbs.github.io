@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f6f2ea;
+  --color-ink: #1f1b17;
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  body {
+    font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  }
+
+  ::selection {
+    background: rgba(171, 115, 54, 0.22);
+  }
+}
+
+@layer components {
+  .site-shell {
+    @apply mx-auto max-w-3xl px-6 py-10 sm:px-8 sm:py-14;
+  }
+
+  .site-header {
+    @apply mb-14 border-b border-stone-300/80 pb-8;
+  }
+
+  .site-title {
+    @apply text-3xl font-semibold tracking-tight text-stone-950 transition hover:text-amber-800 sm:text-4xl;
+  }
+
+  .site-footer {
+    @apply mt-16 border-t border-stone-300/80 pt-6 text-sm text-stone-500;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+  }
+
+  .eyebrow {
+    @apply text-[0.68rem] font-semibold uppercase tracking-[0.28em] text-stone-500;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+  }
+
+  .nav-link {
+    @apply text-sm text-stone-600 transition hover:text-stone-950;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+  }
+
+  .nav-link-current {
+    @apply text-stone-950;
+  }
+
+  .tag-chip {
+    @apply inline-flex items-center rounded-full border border-stone-300 bg-white/70 px-3 py-1 text-sm text-stone-600 transition hover:border-amber-300 hover:text-amber-800;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+  }
+
+  .article-body {
+    @apply text-lg leading-8 text-stone-700;
+  }
+
+  .article-body > * + * {
+    @apply mt-6;
+  }
+
+  .article-body h2 {
+    @apply mt-12 text-2xl font-semibold tracking-tight text-stone-950;
+  }
+
+  .article-body h3 {
+    @apply mt-10 text-xl font-semibold tracking-tight text-stone-950;
+  }
+
+  .article-body p,
+  .article-body li {
+    @apply text-lg leading-8 text-stone-700;
+  }
+
+  .article-body a {
+    @apply underline decoration-stone-400 underline-offset-4 transition hover:text-amber-800 hover:decoration-amber-600;
+  }
+
+  .article-body ul,
+  .article-body ol {
+    @apply ml-6 space-y-3;
+  }
+
+  .article-body blockquote {
+    @apply border-l-2 border-amber-700/50 pl-5 italic text-stone-600;
+  }
+
+  .article-body code {
+    @apply rounded bg-stone-900 px-1.5 py-1 text-[0.95rem] text-stone-100;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  }
+
+  .article-body pre {
+    @apply overflow-x-auto rounded-2xl bg-stone-950 p-5 text-sm leading-7 text-stone-100;
+  }
+
+  .article-body pre code {
+    @apply bg-transparent p-0 text-inherit;
+  }
+}

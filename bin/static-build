@@ -1,0 +1,28 @@
+#!/usr/bin/env sh
+
+set -eu
+
+# Run the app in production mode to ensure correct asset URLs are generated.
+export RAILS_ENV=production
+
+# Prevent most logs from outputting to stdout during a build.
+export RAILS_LOG_LEVEL=warn
+
+# Enable precompiling assets.
+export SECRET_KEY_BASE=dummy
+export SECRET_KEY_BASE_DUMMY=1
+
+# Generate production-optimised assets before generating the static build.
+bundle exec rails assets:clobber
+bundle exec rails assets:precompile
+
+# Build with Parklife - and forward arguments sent to this script.
+bundle exec parklife build "$@"
+
+# Copy all public resources to ./build.
+if [ -d public ]; then
+  cp -R public/. build
+fi
+
+# List all files in the build (useful for debugging).
+find build -type f | sort

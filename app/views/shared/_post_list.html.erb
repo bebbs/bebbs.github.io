@@ -1,0 +1,22 @@
+<div class="space-y-10">
+  <% posts.each do |post| %>
+    <article class="border-t border-stone-300/80 pt-8 first:border-t-0 first:pt-0">
+      <div class="space-y-4">
+        <p class="text-sm text-stone-500"><%= format_publish_date(post.published_on) %></p>
+        <h2 class="text-2xl font-semibold tracking-tight text-stone-950 sm:text-3xl">
+          <%= link_to post.title, post_path(post.slug), class: "transition hover:text-amber-800" %>
+        </h2>
+        <% if post.summary.present? %>
+          <p class="max-w-2xl text-lg leading-8 text-stone-600"><%= post.summary %></p>
+        <% end %>
+        <% if post.tags.any? %>
+          <div class="flex flex-wrap gap-2">
+            <% post.tags.each do |tag| %>
+              <%= render "shared/tag", tag: %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </article>
+  <% end %>
+</div>
