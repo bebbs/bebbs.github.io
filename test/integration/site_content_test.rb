@@ -5,6 +5,9 @@ class SiteContentTest < ActionDispatch::IntegrationTest
     get root_path
 
     assert_response :success
+    assert_select "script[type='importmap']"
+    assert_select "script[type='module']"
+    assert_select "meta[name='turbo-prefetch'][content='false']", false
     assert_select "h2", text: "Starting With Rails and Markdown"
     assert_select "a[href='/tags/ai-engineering']", text: "#ai-engineering"
   end

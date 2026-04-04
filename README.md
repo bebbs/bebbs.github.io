@@ -5,6 +5,7 @@ A minimal Rails blog that reads posts and pages from markdown files and ships as
 ## Stack
 
 - Rails 8 with no database-backed features enabled
+- `importmap-rails` and `turbo-rails` for the default Rails JavaScript stack
 - [`tailwindcss-rails`](https://github.com/rails/tailwindcss-rails) for styling
 - [`kramdown`](https://kramdown.gettalong.org/) for markdown rendering
 - [`parklife`](https://github.com/benpickles/parklife) and [`parklife-rails`](https://github.com/benpickles/parklife-rails) for static export
@@ -55,6 +56,8 @@ Run Rails:
 ```sh
 bin/rails server
 ```
+
+Turbo is enabled through importmap in [`app/javascript/application.js`](/Users/joshbebbington/dev/bebbs/blog/app/javascript/application.js), and link prefetching is left at Turbo's default behavior.
 
 Run Tailwind in watch mode in another terminal:
 

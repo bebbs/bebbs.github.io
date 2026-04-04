@@ -6,6 +6,8 @@ gem "rails", "~> 8.1.2"
 gem "propshaft"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
+gem "importmap-rails"
+gem "turbo-rails"
 # Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
 gem "tailwindcss-rails"
 gem "kramdown"
