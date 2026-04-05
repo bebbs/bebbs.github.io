@@ -25,6 +25,12 @@ tags:
 ---
 ```
 
+Create a new post skeleton with:
+
+```sh
+bin/create-post your-post-slug
+```
+
 Pages live in `content/pages` and use:
 
 ```yaml

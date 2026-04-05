@@ -1,0 +1,59 @@
+#!/usr/bin/env ruby
+require "date"
+require "fileutils"
+
+APP_ROOT = File.expand_path("..", __dir__)
+CONTENT_ROOT = File.expand_path(ENV.fetch("CONTENT_ROOT", "content"), APP_ROOT)
+POSTS_DIR = File.join(CONTENT_ROOT, "posts")
+SLUG_PATTERN = /\A[a-z0-9]+(?:-[a-z0-9]+)*\z/
+
+def abort_with(message)
+  warn message
+  exit 1
+end
+
+def usage
+  "Usage: bin/create-post your-post-slug"
+end
+
+def infer_title(slug)
+  slug.tr("-", " ").sub(/\A\w/) { |letter| letter.upcase }
+end
+
+slug = ARGV[0].to_s.strip
+
+abort_with(usage) if slug.empty?
+abort_with("Only one slug argument is supported.") if ARGV.length > 1
+
+unless slug.match?(SLUG_PATTERN)
+  abort_with("Invalid slug #{slug.inspect}. Use lowercase letters, numbers, and hyphens only.")
+end
+
+FileUtils.mkdir_p(POSTS_DIR)
+
+path = File.join(POSTS_DIR, "#{slug}.md")
+
+if File.exist?(path)
+  abort_with("Post already exists: #{path}")
+end
+
+File.write(path, <<~MARKDOWN)
+  ---
+  title: #{infer_title(slug)}
+  slug: #{slug}
+  publish_date: #{Date.today.iso8601}
+  tags: []
+  ---
+
+  Start with a short opening paragraph that tells the reader what this post is about.
+
+  ## Main idea
+
+  Add the core of the post here.
+
+  ## Wrap up
+
+  Close with the takeaway or next step.
+MARKDOWN
+
+puts "Created #{path}"
