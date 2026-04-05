@@ -26,6 +26,8 @@ jobs:
       # Build with Parklife and use its GitHub Pages URL (either its custom
       # domain or username.github.io/repository).
     - run: bin/static-build --base "${{ steps.pages.outputs.base_url }}"
+      env:
+        SITE_URL: ${{ steps.pages.outputs.base_url }}
 
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3

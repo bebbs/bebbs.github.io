@@ -8,7 +8,9 @@ class SiteContentTest < ActionDispatch::IntegrationTest
     assert_select "script[type='importmap']"
     assert_select "script[type='module']"
     assert_select "meta[name='turbo-prefetch'][content='false']", false
+    assert_select "link[rel='alternate'][type='application/rss+xml'][href='/feed.xml']"
     assert_select "a[href='/tags']", text: "Tags"
+    assert_select "a[href='/feed.xml']", text: "RSS"
     assert_select "h2", text: "Starting With Rails and Markdown"
     assert_select "a[href='/tags/ai-engineering']", text: "#ai-engineering"
   end
@@ -44,5 +46,16 @@ class SiteContentTest < ActionDispatch::IntegrationTest
     assert_select "p.eyebrow", text: "Tags"
     assert_select "a[href='/tags/ai-engineering']", text: "ai-engineering"
     assert_select ".tag-cloud-count", text: "1"
+  end
+
+  test "rss feed renders published posts" do
+    get feed_path(format: :xml)
+
+    assert_response :success
+    assert_equal "application/xml; charset=utf-8", response.media_type ? "#{response.media_type}; charset=#{response.charset}" : response.content_type
+    assert_includes response.body, "<rss version=\"2.0\""
+    assert_includes response.body, "<title>Josh Bebbington</title>"
+    assert_includes response.body, "<link>https://joshbebbington.github.io/blog/posts/starting-with-rails-and-markdown</link>"
+    assert_includes response.body, "<category>ai-engineering</category>"
   end
 end

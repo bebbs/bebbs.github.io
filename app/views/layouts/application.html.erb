@@ -6,6 +6,7 @@
     <meta name="description" content="<%= site_tagline %>">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= tag.link rel: "alternate", type: "application/rss+xml", title: "#{site_title} RSS", href: feed_path(format: :xml) %>
 
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
@@ -26,6 +27,7 @@
 
           <nav class="flex flex-wrap items-center gap-x-5 gap-y-2">
             <%= link_to "Tags", tags_path, class: nav_link_classes(tags_path) %>
+            <%= link_to "RSS", feed_path(format: :xml), class: nav_link_classes(feed_path(format: :xml)) %>
             <% if site_pages.any? %>
               <% site_pages.each do |page| %>
                 <%= link_to page.title, page_path(page.slug), class: nav_link_classes(page.path) %>

@@ -12,6 +12,7 @@ end
 
 Parklife.application.routes do
   root crawl: true
+  get feed_path(format: :xml)
 
   # GitHub Pages supports a custom 404 page.
   get "/404.html"

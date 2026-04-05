@@ -11,5 +11,9 @@ module Content
     def path
       "/posts/#{slug}"
     end
+
+    def published_at
+      published_on.in_time_zone("UTC").beginning_of_day
+    end
   end
 end

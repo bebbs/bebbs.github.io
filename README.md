@@ -37,6 +37,7 @@ slug: about
 Routes:
 
 - `/` lists posts
+- `/feed.xml` serves the RSS feed
 - `/posts/:slug` shows a post
 - `/:slug` shows a page
 - `/tags/:slug` shows the tag archive
@@ -86,6 +87,8 @@ bin/static-build
 ```
 
 The exported site is written to `build/`.
+
+If you want feed links to use a specific absolute URL locally, set `SITE_URL` before building or running the app.
 
 ## GitHub Pages
 

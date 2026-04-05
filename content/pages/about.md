@@ -3,6 +3,6 @@ title: About
 slug: about
 ---
 
-I write about software, AI systems, and the small engineering decisions that make a project feel calm or chaotic.
+Hello! I'm Josh Bebbington, a British software engineer. I'm employed as a Staff Engineer at [Carwow](https://www.carwow.co.uk).
 
-This site is built as a minimal Rails application, but the actual content lives in markdown files inside the repo. That means the writing workflow stays durable and portable.
+I mostly use this blog as a little place to write about software, AI systems, and scaleup sized company dynamics.
